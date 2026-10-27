@@ -1,188 +1,158 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#18243a">
-  <meta name="description" content="Página personal de Bada Francesca Lee Grande, estudiante de Derecho de décimo ciclo en la Universidad Científica del Sur.">
-  <title>Bada Francesca Lee Grande | Estudiante de Derecho</title>
-  <style>
-    :root {
-      --navy: #18243a;
-      --navy-deep: #101a2b;
-      --ink: #253249;
-      --cream: #f8f6f2;
-      --paper: #ffffff;
-      --gold: #c5a16a;
-      --gold-light: #f3e9d9;
-      --muted: #657084;
-      --line: #e8e4dd;
-    }
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body { margin: 0; background: var(--cream); color: var(--ink); font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif; line-height: 1.7; }
-    a { color: inherit; text-decoration: none; }
-    a:focus-visible { outline: 3px solid var(--gold); outline-offset: 4px; border-radius: 3px; }
-    .wrap { width: min(1120px, calc(100% - 44px)); margin: 0 auto; }
-    header { background: var(--navy-deep); color: white; border-bottom: 1px solid rgba(255,255,255,.1); }
-    .nav { display: flex; align-items: center; justify-content: space-between; min-height: 80px; gap: 24px; }
-    .brand { display: flex; align-items: center; gap: 13px; font-size: .86rem; font-weight: 700; letter-spacing: .06em; }
-    .brand-symbol { display: grid; place-items: center; height: 43px; width: 43px; flex: none; border: 1px solid var(--gold); color: var(--gold); font: bold 20px Georgia, serif; }
-    .nav-links { display: flex; gap: 28px; flex-wrap: wrap; font-size: .88rem; color: #dce1eb; }
-    .nav-links a:hover { color: var(--gold); }
-    .hero { overflow: hidden; position: relative; background: linear-gradient(120deg, #101a2b 0%, #1e2c46 70%, #253754 100%); color: white; }
-    .hero::after { content: ""; position: absolute; width: 470px; height: 470px; border: 1px solid rgba(197,161,106,.18); border-radius: 50%; right: -135px; top: -120px; box-shadow: 0 0 0 72px rgba(197,161,106,.035), 0 0 0 145px rgba(197,161,106,.025); pointer-events: none; }
-    .hero-inner { position: relative; z-index: 1; display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(240px, .65fr); align-items: center; gap: 55px; min-height: 470px; padding: 78px 0 90px; }
-    .eyebrow { display: inline-flex; align-items: center; gap: 12px; color: var(--gold); font-size: .8rem; text-transform: uppercase; letter-spacing: .18em; font-weight: 700; }
-    .eyebrow::before { content: ""; width: 27px; height: 1px; background: var(--gold); }
-    h1, h2, .quote { font-family: Georgia, "Times New Roman", serif; }
-    h1 { margin: 20px 0 14px; font-size: clamp(2.7rem, 5.6vw, 5.1rem); font-weight: 500; line-height: 1.1; letter-spacing: -.035em; }
-    .hero h1 span { color: #d9b985; }
-    .hero p { max-width: 600px; margin: 0 0 30px; color: #d5dce6; font-size: 1.06rem; }
-    .cta { display: inline-flex; align-items: center; gap: 15px; padding: 12px 20px; background: var(--gold); color: #152034; font-weight: 750; font-size: .9rem; border-radius: 4px; transition: transform .15s, background .15s; }
-    .cta:hover { background: #e0bd88; transform: translateY(-2px); }
-    .hero-card { justify-self: end; width: min(100%, 320px); padding: 34px 28px; background: rgba(255,255,255,.055); border: 1px solid rgba(213,190,148,.3); backdrop-filter: blur(8px); border-radius: 8px; text-align: center; }
-    .monogram { display: grid; place-items: center; width: 120px; height: 120px; margin: 0 auto 22px; color: var(--gold); font: 500 44px Georgia, serif; border: 1px solid rgba(197,161,106,.75); border-radius: 50%; }
-    .hero-card .title { color: #fff; font: 500 1.28rem Georgia, serif; }
-    .hero-card .caption { display: block; margin-top: 6px; color: #bcc7d9; font-size: .82rem; }
-    .hero-card .rule { width: 50px; height: 1px; margin: 22px auto; background: var(--gold); }
-    .hero-card .tag { display: inline-block; color: #e5d1b0; font-size: .81rem; letter-spacing: .06em; text-transform: uppercase; }
-    section { scroll-margin-top: 25px; }
-    .section { padding: 85px 0; }
-    .two-col { display: grid; grid-template-columns: minmax(210px,.65fr) minmax(0,1.35fr); gap: 75px; }
-    .kicker { color: #94764e; text-transform: uppercase; letter-spacing: .16em; font-size: .76rem; font-weight: 800; }
-    h2 { margin: 15px 0 20px; color: var(--navy); font-size: clamp(2rem, 4vw, 3rem); line-height: 1.22; font-weight: 500; letter-spacing: -.02em; }
-    .about-text { max-width: 680px; font-size: 1.06rem; color: #4c596e; }
-    .about-text p { margin: 0 0 18px; }
-    .highlight { border-left: 3px solid var(--gold); padding: 3px 0 3px 20px; margin-top: 25px; color: var(--navy); font-weight: 650; }
-    .education { background: #fff; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
-    .section-heading { max-width: 700px; margin-bottom: 32px; }
-    .section-heading p { color: var(--muted); margin-top: 0; }
-    .facts { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 18px; }
-    .fact { padding: 31px 26px; border: 1px solid var(--line); border-radius: 9px; background: var(--cream); }
-    .fact .num { display: block; color: #a17d4c; font: 500 1.7rem Georgia, serif; margin-bottom: 13px; }
-    .fact h3 { margin: 0 0 9px; color: var(--navy); font-size: 1.05rem; line-height: 1.4; }
-    .fact p { margin: 0; color: var(--muted); font-size: .92rem; }
-    .purpose { padding: 67px 0; }
-    .purpose-panel { display: grid; grid-template-columns: .9fr 1.1fr; gap: 36px; align-items: center; padding: 43px 48px; border: 1px solid #e1d2bd; background: #f1eae0; border-radius: 9px; }
-    .purpose-panel h2 { margin-bottom: 0; }
-    .purpose-panel p { color: #566075; margin: 0; font-size: 1.02rem; }
-    .contact { background: var(--navy); color: white; padding: 75px 0; }
-    .contact h2 { color: #fff; margin-bottom: 14px; }
-    .contact p { color: #c6cfdd; max-width: 620px; }
-    .contact-link { display: inline-flex; align-items: center; gap: 10px; border-bottom: 1px solid var(--gold); padding: 7px 0; margin-top: 13px; color: #e8c995; font-weight: 700; }
-    .contact-link:hover { color: white; }
-    footer { background: var(--navy-deep); color: #aebacb; padding: 23px 0; font-size: .82rem; }
-    .foot { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
-    @media (max-width: 760px) {
-      .nav { padding: 15px 0; min-height: auto; flex-wrap: wrap; }
-      .nav-links { gap: 16px; font-size: .82rem; }
-      .hero-inner { grid-template-columns: 1fr; gap: 33px; padding: 62px 0; }
-      .hero-card { width: 100%; max-width: 400px; justify-self: start; }
-      .section { padding: 58px 0; }
-      .two-col { grid-template-columns: 1fr; gap: 2px; }
-      .facts { grid-template-columns: 1fr; }
-      .purpose-panel { grid-template-columns: 1fr; gap: 18px; padding: 30px 25px; }
-      .contact { padding: 60px 0; }
-    }
-    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .cta { transition: none; } }
-  </style>
+  <meta name="theme-color" content="#fff5f8">
+  <meta name="description" content="Página personal de Bada Francesca Lee Grande, estudiante de Derecho de décimo ciclo en la Universidad Científica del Sur. Proyecto del curso Legal Tech, sección 0B TEO, código 2274-5110.">
+  <title>Bada Francesca Lee Grande | Legal Tech</title>
+  <link rel="stylesheet" href="./style.css">
+  <script src="./script.js" defer></script>
 </head>
 <body>
-  <header>
-    <nav class="wrap nav" aria-label="Navegación principal">
-      <a class="brand" href="#inicio" aria-label="Volver al inicio"><span class="brand-symbol">B</span><span>BADA FRANCESCA LEE GRANDE</span></a>
-      <div class="nav-links">
+  <a class="skip-link" href="#contenido">Ir al contenido</a>
+  <header class="site-header" id="inicio">
+    <div class="container header-inner">
+      <a class="brand" href="#inicio" aria-label="Bada, volver al inicio">
+        <span class="brand-mark">b.</span><span class="brand-name">bada<span class="brand-spark">✳</span></span>
+      </a>
+      <button class="menu-toggle" id="menu-toggle" type="button" aria-label="Abrir menú" aria-controls="main-nav" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="main-nav" id="main-nav" aria-label="Menú principal">
         <a href="#sobre-mi">Sobre mí</a>
         <a href="#formacion">Formación</a>
-        <a href="#contacto">Contacto</a>
-      </div>
-    </nav>
+        <a href="#legal-tech">Legal Tech</a>
+        <a class="nav-contact" href="#contacto">Contacto <span aria-hidden="true">↗</span></a>
+      </nav>
+    </div>
   </header>
 
-  <main>
-    <section class="hero" id="inicio">
-      <div class="wrap hero-inner">
-        <div>
-          <span class="eyebrow">Mi espacio personal y académico</span>
-          <h1>Hola, soy<br><span>Bada Francesca<br>Lee Grande.</span></h1>
-          <p>Estudiante de Derecho en la Universidad Científica del Sur. Actualmente curso el décimo ciclo de mi carrera profesional.</p>
-          <a class="cta" href="#sobre-mi">Conoce más sobre mí <span aria-hidden="true">↗</span></a>
+  <main id="contenido">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-ornament ornament-one" aria-hidden="true"></div>
+      <div class="hero-ornament ornament-two" aria-hidden="true"></div>
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <span class="eyebrow"><span class="status-dot" aria-hidden="true"></span> BIENVENIDOS A MI ESPACIO</span>
+          <h1 id="hero-title">Hola, soy<br><em>Bada</em><br>Francesca<span class="punctuation">.</span></h1>
+          <p class="hero-lastname">LEE GRANDE</p>
+          <p class="hero-description">Estudiante de Derecho en la <strong>Universidad Científica del Sur</strong>. Estoy cursando el décimo ciclo y aquí comparto un poquito sobre mí y mi etapa universitaria.</p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#sobre-mi">Conóceme mejor <span aria-hidden="true">↗</span></a>
+            <a class="text-link" href="#legal-tech">Mi proyecto Legal Tech <span aria-hidden="true">↓</span></a>
+          </div>
+          <div class="hero-footnote"><span class="pink-line" aria-hidden="true"></span> DERECHO · DÉCIMO CICLO</div>
         </div>
-        <div class="hero-card" aria-label="Resumen de mi perfil académico">
-          <div class="monogram" aria-hidden="true">BL</div>
-          <div class="title">Derecho</div>
-          <span class="caption">Universidad Científica del Sur</span>
-          <div class="rule"></div>
-          <span class="tag">Décimo ciclo</span>
+        <div class="hero-visual">
+          <div class="hero-photo-frame">
+            <img src="./images/foto-bada-1.jpg" alt="Fotografía personal de Bada Francesca" fetchpriority="high" width="900" height="1600">
+          </div>
+          <div class="photo-sticker" aria-hidden="true"><span>hello!</span><span class="sticker-star">✳</span></div>
+          <div class="visual-star" aria-hidden="true">✦</div>
+          <div class="photo-label"><span class="label-line" aria-hidden="true"></span> A LITTLE ABOUT ME</div>
+        </div>
+      </div>
+      <div class="hero-bottom-border" aria-hidden="true"></div>
+    </section>
+
+    <section class="intro section" id="sobre-mi" aria-labelledby="about-heading">
+      <div class="container intro-grid">
+        <div class="intro-photo-wrap">
+          <div class="intro-photo-card">
+            <img src="./images/foto-bada-2.jpg" alt="Bada Francesca frente a un espejo" loading="lazy" width="1200" height="1600">
+          </div>
+          <span class="photo-note">just being me ♡</span>
+          <div class="photo-flower" aria-hidden="true">✿</div>
+        </div>
+        <div class="intro-copy">
+          <div class="section-label"><span>01</span><span>SOBRE MÍ</span></div>
+          <h2 id="about-heading">Un poquito<br>sobre <em>mí.</em></h2>
+          <p>¡Hola! Mi nombre es <strong>Bada Francesca Lee Grande</strong> y estudio la carrera de Derecho en la Universidad Científica del Sur.</p>
+          <p>Actualmente estoy en el <strong>décimo ciclo</strong>, una etapa en la que sigo aprendiendo, descubriendo nuevos temas y preparándome para mi futuro profesional.</p>
+          <p>Creé esta página como parte de mi curso de <strong>Legal Tech</strong>, para presentarme de una forma diferente y poner en práctica lo aprendido sobre herramientas digitales.</p>
+          <div class="quote-line"><span aria-hidden="true">✳</span> Aprender, crecer y seguir adelante.</div>
         </div>
       </div>
     </section>
 
-    <section class="section" id="sobre-mi">
-      <div class="wrap two-col">
-        <div>
-          <span class="kicker">Presentación</span>
-          <h2>Un poco<br>sobre mí</h2>
+    <section class="education section" id="formacion" aria-labelledby="education-heading">
+      <div class="container">
+        <div class="section-heading centered">
+          <div class="section-label"><span>02</span><span>MI FORMACIÓN</span></div>
+          <h2 id="education-heading">Mi camino <em>académico</em></h2>
+          <p>Tres datos que resumen la etapa en la que me encuentro.</p>
         </div>
-        <div class="about-text">
-          <p>Mi nombre es <strong>Bada Francesca Lee Grande</strong> y soy estudiante de la carrera de Derecho en la <strong>Universidad Científica del Sur</strong>.</p>
-          <p>Actualmente me encuentro cursando el <strong>décimo ciclo</strong>, una etapa importante de mi formación en la que continúo ampliando mis conocimientos y preparándome para los próximos retos de mi desarrollo profesional.</p>
-          <p>He creado este espacio para presentarme y compartir mi trayectoria académica.</p>
-          <div class="highlight">Formación académica, aprendizaje y crecimiento profesional.</div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section education" id="formacion">
-      <div class="wrap">
-        <div class="section-heading">
-          <span class="kicker">Mi formación</span>
-          <h2>Perfil académico</h2>
-          <p>Estos son los datos principales de mi etapa universitaria actual.</p>
-        </div>
-        <div class="facts">
-          <article class="fact">
-            <span class="num" aria-hidden="true">01</span>
-            <h3>Universidad</h3>
-            <p>Universidad Científica del Sur</p>
+        <div class="education-cards">
+          <article class="education-card">
+            <span class="card-icon" aria-hidden="true">✦</span><span class="card-number">01 / UNIVERSIDAD</span>
+            <h3>Universidad<br>Científica del Sur</h3><p>Mi casa de estudios.</p>
           </article>
-          <article class="fact">
-            <span class="num" aria-hidden="true">02</span>
-            <h3>Carrera profesional</h3>
-            <p>Derecho</p>
+          <article class="education-card featured">
+            <span class="card-icon" aria-hidden="true">⚖</span><span class="card-number">02 / CARRERA</span>
+            <h3>Derecho</h3><p>La carrera que estoy estudiando.</p>
           </article>
-          <article class="fact">
-            <span class="num" aria-hidden="true">03</span>
-            <h3>Ciclo académico</h3>
-            <p>Décimo ciclo</p>
+          <article class="education-card">
+            <span class="card-icon" aria-hidden="true">✿</span><span class="card-number">03 / ETAPA</span>
+            <h3>Décimo ciclo</h3><p>Continuando mi formación profesional.</p>
           </article>
         </div>
       </div>
     </section>
 
-    <section class="purpose">
-      <div class="wrap purpose-panel">
-        <div>
-          <span class="kicker">Mirando hacia adelante</span>
-          <h2>Mi siguiente etapa</h2>
+    <section class="legal-section section" id="legal-tech" aria-labelledby="legal-heading">
+      <div class="container legal-shell">
+        <div class="legal-copy">
+          <span class="course-pill">PROYECTO ACADÉMICO</span>
+          <h2 id="legal-heading">Derecho + tecnología<span class="legal-dot">.</span></h2>
+          <p>Esta página forma parte del curso <strong>Legal Tech</strong>. Es una oportunidad para explorar cómo la tecnología también puede acompañar nuestra formación en Derecho.</p>
+          <div class="tech-stack" aria-label="Tecnologías utilizadas"><span>HTML</span><span>CSS</span><span>JavaScript</span></div>
         </div>
-        <p>Mi objetivo es seguir fortaleciendo mi preparación jurídica, poner en práctica lo aprendido durante la carrera y continuar desarrollándome en el ámbito profesional del Derecho.</p>
+        <div class="course-info">
+          <span class="course-info-title">DATOS DEL CURSO <span aria-hidden="true">↗</span></span>
+          <dl>
+            <div><dt>Curso</dt><dd>Legal Tech</dd></div>
+            <div><dt>Sección</dt><dd>0B TEO</dd></div>
+            <div><dt>Código</dt><dd>2274-5110</dd></div>
+            <div><dt>Estudiante</dt><dd>Bada Francesca Lee Grande</dd></div>
+          </dl>
+        </div>
+        <span class="legal-decoration" aria-hidden="true">✳</span>
       </div>
     </section>
 
-    <section class="contact" id="contacto">
-      <div class="wrap">
-        <span class="eyebrow">Contacto</span>
-        <h2>Conectemos</h2>
-        <p>Puedes visitar el perfil de GitHub desde el cual se publica esta página.</p>
-        <a class="contact-link" href="https://github.com/badalee2002" target="_blank" rel="noopener noreferrer">Mi perfil de GitHub <span aria-hidden="true">↗</span></a>
+    <section class="moments section" aria-labelledby="moments-heading">
+      <div class="container moments-grid">
+        <div class="moments-copy">
+          <div class="section-label"><span>03</span><span>UN POCO MÁS DE MÍ</span></div>
+          <h2 id="moments-heading">Más allá<br>de las <em>clases.</em></h2>
+          <p>También quise darle a este espacio un toque personal. Para mí, esta página no es solo una tarea: es una pequeña presentación de quién soy y de la etapa que estoy viviendo.</p>
+          <span class="moments-signature">con cariño, Bada ♡</span>
+        </div>
+        <div class="moments-photo-wrap">
+          <img src="./images/foto-bada-3.jpg" alt="Fotografía personal de Bada Francesca en un restaurante" loading="lazy" width="1200" height="1600">
+          <span class="moments-stamp">A MOMENT <span aria-hidden="true">✧</span> TO REMEMBER</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact-section" id="contacto" aria-labelledby="contact-heading">
+      <div class="container contact-inner">
+        <span class="contact-spark" aria-hidden="true">✳</span>
+        <div class="section-label centered-label"><span>04</span><span>CONTACTO</span></div>
+        <h2 id="contact-heading">¡Gracias por <em>visitar!</em></h2>
+        <p>Este es mi espacio personal para el curso de Legal Tech. Puedes ver el proyecto en GitHub o compartir esta página.</p>
+        <div class="contact-actions">
+          <a class="button button-dark" href="https://github.com/badalee2002/bada" target="_blank" rel="noopener noreferrer">Ver mi GitHub <span aria-hidden="true">↗</span></a>
+          <button class="button button-outline" type="button" id="copy-link">Copiar enlace <span aria-hidden="true">⧉</span></button>
+        </div>
+        <p id="copy-feedback" class="copy-feedback" role="status" aria-live="polite"></p>
       </div>
     </section>
   </main>
 
-  <footer>
-    <div class="wrap foot"><span>© 2026 Bada Francesca Lee Grande</span><span>Página personal · Hecha con HTML y CSS</span></div>
+  <footer class="site-footer">
+    <div class="container footer-inner"><a href="#inicio" class="footer-brand">bada<span>✳</span></a><p>© <span id="current-year">2026</span> Bada Francesca Lee Grande</p><span>Legal Tech · 0B TEO · 2274-5110</span></div>
   </footer>
 </body>
 </html>
