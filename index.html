@@ -3,114 +3,186 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Una página web estática, sencilla y moderna.">
-  <title>Mi sitio web</title>
+  <meta name="theme-color" content="#18243a">
+  <meta name="description" content="Página personal de Bada Francesca Lee Grande, estudiante de Derecho de décimo ciclo en la Universidad Científica del Sur.">
+  <title>Bada Francesca Lee Grande | Estudiante de Derecho</title>
   <style>
     :root {
-      color-scheme: light;
-      --bg: #f6f8fc;
-      --surface: #ffffff;
-      --text: #17243b;
-      --muted: #59677d;
-      --accent: #2557d6;
-      --border: #e5eaf2;
+      --navy: #18243a;
+      --navy-deep: #101a2b;
+      --ink: #253249;
+      --cream: #f8f6f2;
+      --paper: #ffffff;
+      --gold: #c5a16a;
+      --gold-light: #f3e9d9;
+      --muted: #657084;
+      --line: #e8e4dd;
     }
-
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
-    body {
-      margin: 0;
-      font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
-      line-height: 1.6;
-      color: var(--text);
-      background: var(--bg);
+    body { margin: 0; background: var(--cream); color: var(--ink); font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif; line-height: 1.7; }
+    a { color: inherit; text-decoration: none; }
+    a:focus-visible { outline: 3px solid var(--gold); outline-offset: 4px; border-radius: 3px; }
+    .wrap { width: min(1120px, calc(100% - 44px)); margin: 0 auto; }
+    header { background: var(--navy-deep); color: white; border-bottom: 1px solid rgba(255,255,255,.1); }
+    .nav { display: flex; align-items: center; justify-content: space-between; min-height: 80px; gap: 24px; }
+    .brand { display: flex; align-items: center; gap: 13px; font-size: .86rem; font-weight: 700; letter-spacing: .06em; }
+    .brand-symbol { display: grid; place-items: center; height: 43px; width: 43px; flex: none; border: 1px solid var(--gold); color: var(--gold); font: bold 20px Georgia, serif; }
+    .nav-links { display: flex; gap: 28px; flex-wrap: wrap; font-size: .88rem; color: #dce1eb; }
+    .nav-links a:hover { color: var(--gold); }
+    .hero { overflow: hidden; position: relative; background: linear-gradient(120deg, #101a2b 0%, #1e2c46 70%, #253754 100%); color: white; }
+    .hero::after { content: ""; position: absolute; width: 470px; height: 470px; border: 1px solid rgba(197,161,106,.18); border-radius: 50%; right: -135px; top: -120px; box-shadow: 0 0 0 72px rgba(197,161,106,.035), 0 0 0 145px rgba(197,161,106,.025); pointer-events: none; }
+    .hero-inner { position: relative; z-index: 1; display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(240px, .65fr); align-items: center; gap: 55px; min-height: 470px; padding: 78px 0 90px; }
+    .eyebrow { display: inline-flex; align-items: center; gap: 12px; color: var(--gold); font-size: .8rem; text-transform: uppercase; letter-spacing: .18em; font-weight: 700; }
+    .eyebrow::before { content: ""; width: 27px; height: 1px; background: var(--gold); }
+    h1, h2, .quote { font-family: Georgia, "Times New Roman", serif; }
+    h1 { margin: 20px 0 14px; font-size: clamp(2.7rem, 5.6vw, 5.1rem); font-weight: 500; line-height: 1.1; letter-spacing: -.035em; }
+    .hero h1 span { color: #d9b985; }
+    .hero p { max-width: 600px; margin: 0 0 30px; color: #d5dce6; font-size: 1.06rem; }
+    .cta { display: inline-flex; align-items: center; gap: 15px; padding: 12px 20px; background: var(--gold); color: #152034; font-weight: 750; font-size: .9rem; border-radius: 4px; transition: transform .15s, background .15s; }
+    .cta:hover { background: #e0bd88; transform: translateY(-2px); }
+    .hero-card { justify-self: end; width: min(100%, 320px); padding: 34px 28px; background: rgba(255,255,255,.055); border: 1px solid rgba(213,190,148,.3); backdrop-filter: blur(8px); border-radius: 8px; text-align: center; }
+    .monogram { display: grid; place-items: center; width: 120px; height: 120px; margin: 0 auto 22px; color: var(--gold); font: 500 44px Georgia, serif; border: 1px solid rgba(197,161,106,.75); border-radius: 50%; }
+    .hero-card .title { color: #fff; font: 500 1.28rem Georgia, serif; }
+    .hero-card .caption { display: block; margin-top: 6px; color: #bcc7d9; font-size: .82rem; }
+    .hero-card .rule { width: 50px; height: 1px; margin: 22px auto; background: var(--gold); }
+    .hero-card .tag { display: inline-block; color: #e5d1b0; font-size: .81rem; letter-spacing: .06em; text-transform: uppercase; }
+    section { scroll-margin-top: 25px; }
+    .section { padding: 85px 0; }
+    .two-col { display: grid; grid-template-columns: minmax(210px,.65fr) minmax(0,1.35fr); gap: 75px; }
+    .kicker { color: #94764e; text-transform: uppercase; letter-spacing: .16em; font-size: .76rem; font-weight: 800; }
+    h2 { margin: 15px 0 20px; color: var(--navy); font-size: clamp(2rem, 4vw, 3rem); line-height: 1.22; font-weight: 500; letter-spacing: -.02em; }
+    .about-text { max-width: 680px; font-size: 1.06rem; color: #4c596e; }
+    .about-text p { margin: 0 0 18px; }
+    .highlight { border-left: 3px solid var(--gold); padding: 3px 0 3px 20px; margin-top: 25px; color: var(--navy); font-weight: 650; }
+    .education { background: #fff; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+    .section-heading { max-width: 700px; margin-bottom: 32px; }
+    .section-heading p { color: var(--muted); margin-top: 0; }
+    .facts { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 18px; }
+    .fact { padding: 31px 26px; border: 1px solid var(--line); border-radius: 9px; background: var(--cream); }
+    .fact .num { display: block; color: #a17d4c; font: 500 1.7rem Georgia, serif; margin-bottom: 13px; }
+    .fact h3 { margin: 0 0 9px; color: var(--navy); font-size: 1.05rem; line-height: 1.4; }
+    .fact p { margin: 0; color: var(--muted); font-size: .92rem; }
+    .purpose { padding: 67px 0; }
+    .purpose-panel { display: grid; grid-template-columns: .9fr 1.1fr; gap: 36px; align-items: center; padding: 43px 48px; border: 1px solid #e1d2bd; background: #f1eae0; border-radius: 9px; }
+    .purpose-panel h2 { margin-bottom: 0; }
+    .purpose-panel p { color: #566075; margin: 0; font-size: 1.02rem; }
+    .contact { background: var(--navy); color: white; padding: 75px 0; }
+    .contact h2 { color: #fff; margin-bottom: 14px; }
+    .contact p { color: #c6cfdd; max-width: 620px; }
+    .contact-link { display: inline-flex; align-items: center; gap: 10px; border-bottom: 1px solid var(--gold); padding: 7px 0; margin-top: 13px; color: #e8c995; font-weight: 700; }
+    .contact-link:hover { color: white; }
+    footer { background: var(--navy-deep); color: #aebacb; padding: 23px 0; font-size: .82rem; }
+    .foot { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+    @media (max-width: 760px) {
+      .nav { padding: 15px 0; min-height: auto; flex-wrap: wrap; }
+      .nav-links { gap: 16px; font-size: .82rem; }
+      .hero-inner { grid-template-columns: 1fr; gap: 33px; padding: 62px 0; }
+      .hero-card { width: 100%; max-width: 400px; justify-self: start; }
+      .section { padding: 58px 0; }
+      .two-col { grid-template-columns: 1fr; gap: 2px; }
+      .facts { grid-template-columns: 1fr; }
+      .purpose-panel { grid-template-columns: 1fr; gap: 18px; padding: 30px 25px; }
+      .contact { padding: 60px 0; }
     }
-    a { color: var(--accent); }
-    .container { width: min(100% - 2rem, 960px); margin-inline: auto; }
-    header { background: var(--surface); border-bottom: 1px solid var(--border); }
-    .topbar { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding-block: 1.1rem; }
-    .brand { font-weight: 800; font-size: 1.15rem; color: var(--text); text-decoration: none; }
-    nav { display: flex; flex-wrap: wrap; gap: 1rem; }
-    nav a { text-decoration: none; color: var(--muted); font-weight: 600; }
-    nav a:hover, nav a:focus-visible { color: var(--accent); }
-    .hero { text-align: center; padding: 6rem 0 5rem; }
-    .pill { display: inline-block; padding: .35rem .8rem; border-radius: 999px; background: #e8eeff; color: #2144a8; font-size: .85rem; font-weight: 700; }
-    h1 { font-size: clamp(2.3rem, 7vw, 4rem); line-height: 1.15; margin: 1rem 0; letter-spacing: -.04em; }
-    .hero p { font-size: 1.15rem; max-width: 590px; margin: 0 auto 1.75rem; color: var(--muted); }
-    .button { display: inline-block; background: var(--accent); color: white; padding: .85rem 1.4rem; border-radius: .7rem; font-weight: 700; text-decoration: none; }
-    .button:hover, .button:focus-visible { background: #173fb0; }
-    section.content { padding: 2rem 0 3rem; }
-    h2 { font-size: 1.6rem; margin: 0 0 1.2rem; }
-    .card-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
-    .card { background: var(--surface); border: 1px solid var(--border); border-radius: 1rem; padding: 1.4rem; }
-    .card h3 { margin: 0 0 .5rem; }
-    .card p, .content > .container > p { color: var(--muted); }
-    footer { border-top: 1px solid var(--border); padding: 1.6rem 0; margin-top: 2rem; text-align: center; color: var(--muted); font-size: .9rem; }
-    @media (max-width: 640px) {
-      .topbar { flex-direction: column; }
-      .hero { padding: 4rem 0 3rem; }
-      .card-grid { grid-template-columns: 1fr; }
-    }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .cta { transition: none; } }
   </style>
 </head>
 <body>
   <header>
-    <div class="container topbar">
-      <a class="brand" href="#inicio">Mi Sitio</a>
-      <nav aria-label="Navegación principal">
-        <a href="#inicio">Inicio</a>
-        <a href="#acerca">Acerca de</a>
-        <a href="#servicios">Servicios</a>
+    <nav class="wrap nav" aria-label="Navegación principal">
+      <a class="brand" href="#inicio" aria-label="Volver al inicio"><span class="brand-symbol">B</span><span>BADA FRANCESCA LEE GRANDE</span></a>
+      <div class="nav-links">
+        <a href="#sobre-mi">Sobre mí</a>
+        <a href="#formacion">Formación</a>
         <a href="#contacto">Contacto</a>
-      </nav>
-    </div>
+      </div>
+    </nav>
   </header>
 
   <main>
-    <section id="inicio" class="hero container">
-      <span class="pill">Bienvenido</span>
-      <h1>Hola, esta es mi página web</h1>
-      <p>Un sitio estático, rápido y adaptable a celulares, listo para publicar gratuitamente con GitHub Pages.</p>
-      <a class="button" href="#acerca">Conocer más</a>
-    </section>
-
-    <section id="acerca" class="content">
-      <div class="container">
-        <h2>Acerca de</h2>
-        <p>Este es un espacio donde puedes presentar tu proyecto, negocio o perfil profesional. Personaliza estos textos directamente en el archivo <strong>index.html</strong>.</p>
+    <section class="hero" id="inicio">
+      <div class="wrap hero-inner">
+        <div>
+          <span class="eyebrow">Mi espacio personal y académico</span>
+          <h1>Hola, soy<br><span>Bada Francesca<br>Lee Grande.</span></h1>
+          <p>Estudiante de Derecho en la Universidad Científica del Sur. Actualmente curso el décimo ciclo de mi carrera profesional.</p>
+          <a class="cta" href="#sobre-mi">Conoce más sobre mí <span aria-hidden="true">↗</span></a>
+        </div>
+        <div class="hero-card" aria-label="Resumen de mi perfil académico">
+          <div class="monogram" aria-hidden="true">BL</div>
+          <div class="title">Derecho</div>
+          <span class="caption">Universidad Científica del Sur</span>
+          <div class="rule"></div>
+          <span class="tag">Décimo ciclo</span>
+        </div>
       </div>
     </section>
 
-    <section id="servicios" class="content">
-      <div class="container">
-        <h2>¿Qué encontrarás aquí?</h2>
-        <div class="card-grid">
-          <article class="card">
-            <h3>Diseño sencillo</h3>
-            <p>Una presentación limpia y fácil de adaptar a tus necesidades.</p>
+    <section class="section" id="sobre-mi">
+      <div class="wrap two-col">
+        <div>
+          <span class="kicker">Presentación</span>
+          <h2>Un poco<br>sobre mí</h2>
+        </div>
+        <div class="about-text">
+          <p>Mi nombre es <strong>Bada Francesca Lee Grande</strong> y soy estudiante de la carrera de Derecho en la <strong>Universidad Científica del Sur</strong>.</p>
+          <p>Actualmente me encuentro cursando el <strong>décimo ciclo</strong>, una etapa importante de mi formación en la que continúo ampliando mis conocimientos y preparándome para los próximos retos de mi desarrollo profesional.</p>
+          <p>He creado este espacio para presentarme y compartir mi trayectoria académica.</p>
+          <div class="highlight">Formación académica, aprendizaje y crecimiento profesional.</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section education" id="formacion">
+      <div class="wrap">
+        <div class="section-heading">
+          <span class="kicker">Mi formación</span>
+          <h2>Perfil académico</h2>
+          <p>Estos son los datos principales de mi etapa universitaria actual.</p>
+        </div>
+        <div class="facts">
+          <article class="fact">
+            <span class="num" aria-hidden="true">01</span>
+            <h3>Universidad</h3>
+            <p>Universidad Científica del Sur</p>
           </article>
-          <article class="card">
-            <h3>Diseño adaptable</h3>
-            <p>Se ve bien en computadoras, tablets y teléfonos.</p>
+          <article class="fact">
+            <span class="num" aria-hidden="true">02</span>
+            <h3>Carrera profesional</h3>
+            <p>Derecho</p>
           </article>
-          <article class="card">
-            <h3>Sin dependencias</h3>
-            <p>Funciona con un solo archivo HTML, sin instalar nada.</p>
+          <article class="fact">
+            <span class="num" aria-hidden="true">03</span>
+            <h3>Ciclo académico</h3>
+            <p>Décimo ciclo</p>
           </article>
         </div>
       </div>
     </section>
 
-    <section id="contacto" class="content">
-      <div class="container">
-        <h2>Contacto</h2>
-        <p>Para agregar tus datos de contacto, reemplaza este texto por tu correo o tus redes sociales.</p>
+    <section class="purpose">
+      <div class="wrap purpose-panel">
+        <div>
+          <span class="kicker">Mirando hacia adelante</span>
+          <h2>Mi siguiente etapa</h2>
+        </div>
+        <p>Mi objetivo es seguir fortaleciendo mi preparación jurídica, poner en práctica lo aprendido durante la carrera y continuar desarrollándome en el ámbito profesional del Derecho.</p>
+      </div>
+    </section>
+
+    <section class="contact" id="contacto">
+      <div class="wrap">
+        <span class="eyebrow">Contacto</span>
+        <h2>Conectemos</h2>
+        <p>Puedes visitar el perfil de GitHub desde el cual se publica esta página.</p>
+        <a class="contact-link" href="https://github.com/badalee2002" target="_blank" rel="noopener noreferrer">Mi perfil de GitHub <span aria-hidden="true">↗</span></a>
       </div>
     </section>
   </main>
 
   <footer>
-    <div class="container">© 2026 Mi Sitio. Todos los derechos reservados.</div>
+    <div class="wrap foot"><span>© 2026 Bada Francesca Lee Grande</span><span>Página personal · Hecha con HTML y CSS</span></div>
   </footer>
 </body>
 </html>
