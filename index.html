@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Una página web estática, sencilla y moderna.">
+  <title>Mi sitio web</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f6f8fc;
+      --surface: #ffffff;
+      --text: #17243b;
+      --muted: #59677d;
+      --accent: #2557d6;
+      --border: #e5eaf2;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+      line-height: 1.6;
+      color: var(--text);
+      background: var(--bg);
+    }
+    a { color: var(--accent); }
+    .container { width: min(100% - 2rem, 960px); margin-inline: auto; }
+    header { background: var(--surface); border-bottom: 1px solid var(--border); }
+    .topbar { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding-block: 1.1rem; }
+    .brand { font-weight: 800; font-size: 1.15rem; color: var(--text); text-decoration: none; }
+    nav { display: flex; flex-wrap: wrap; gap: 1rem; }
+    nav a { text-decoration: none; color: var(--muted); font-weight: 600; }
+    nav a:hover, nav a:focus-visible { color: var(--accent); }
+    .hero { text-align: center; padding: 6rem 0 5rem; }
+    .pill { display: inline-block; padding: .35rem .8rem; border-radius: 999px; background: #e8eeff; color: #2144a8; font-size: .85rem; font-weight: 700; }
+    h1 { font-size: clamp(2.3rem, 7vw, 4rem); line-height: 1.15; margin: 1rem 0; letter-spacing: -.04em; }
+    .hero p { font-size: 1.15rem; max-width: 590px; margin: 0 auto 1.75rem; color: var(--muted); }
+    .button { display: inline-block; background: var(--accent); color: white; padding: .85rem 1.4rem; border-radius: .7rem; font-weight: 700; text-decoration: none; }
+    .button:hover, .button:focus-visible { background: #173fb0; }
+    section.content { padding: 2rem 0 3rem; }
+    h2 { font-size: 1.6rem; margin: 0 0 1.2rem; }
+    .card-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
+    .card { background: var(--surface); border: 1px solid var(--border); border-radius: 1rem; padding: 1.4rem; }
+    .card h3 { margin: 0 0 .5rem; }
+    .card p, .content > .container > p { color: var(--muted); }
+    footer { border-top: 1px solid var(--border); padding: 1.6rem 0; margin-top: 2rem; text-align: center; color: var(--muted); font-size: .9rem; }
+    @media (max-width: 640px) {
+      .topbar { flex-direction: column; }
+      .hero { padding: 4rem 0 3rem; }
+      .card-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container topbar">
+      <a class="brand" href="#inicio">Mi Sitio</a>
+      <nav aria-label="Navegación principal">
+        <a href="#inicio">Inicio</a>
+        <a href="#acerca">Acerca de</a>
+        <a href="#servicios">Servicios</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section id="inicio" class="hero container">
+      <span class="pill">Bienvenido</span>
+      <h1>Hola, esta es mi página web</h1>
+      <p>Un sitio estático, rápido y adaptable a celulares, listo para publicar gratuitamente con GitHub Pages.</p>
+      <a class="button" href="#acerca">Conocer más</a>
+    </section>
+
+    <section id="acerca" class="content">
+      <div class="container">
+        <h2>Acerca de</h2>
+        <p>Este es un espacio donde puedes presentar tu proyecto, negocio o perfil profesional. Personaliza estos textos directamente en el archivo <strong>index.html</strong>.</p>
+      </div>
+    </section>
+
+    <section id="servicios" class="content">
+      <div class="container">
+        <h2>¿Qué encontrarás aquí?</h2>
+        <div class="card-grid">
+          <article class="card">
+            <h3>Diseño sencillo</h3>
+            <p>Una presentación limpia y fácil de adaptar a tus necesidades.</p>
+          </article>
+          <article class="card">
+            <h3>Diseño adaptable</h3>
+            <p>Se ve bien en computadoras, tablets y teléfonos.</p>
+          </article>
+          <article class="card">
+            <h3>Sin dependencias</h3>
+            <p>Funciona con un solo archivo HTML, sin instalar nada.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contacto" class="content">
+      <div class="container">
+        <h2>Contacto</h2>
+        <p>Para agregar tus datos de contacto, reemplaza este texto por tu correo o tus redes sociales.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">© 2026 Mi Sitio. Todos los derechos reservados.</div>
+  </footer>
+</body>
+</html>
