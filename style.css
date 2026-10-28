@@ -1,0 +1,89 @@
+/* CSS cambia los colores, las letras y la posición de las fotos. */
+
+/* 1. Toda la página */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  color: #34232b;
+  background: #fffafa;
+  line-height: 1.7;
+}
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; }
+h1, h2, h3 { line-height: 1.2; }
+h2 { font-size: 48px; }
+em { color: #c65c85; font-family: Georgia, serif; }
+.contenedor { width: 90%; max-width: 1100px; margin: auto; }
+.seccion { padding: 85px 0; }
+.centro { text-align: center; }
+.etiqueta { color: #963a61; font-size: 12px; font-weight: bold; }
+
+/* 2. Filas y tarjetas, como vimos con Flexbox */
+.fila, .barra, .tarjetas, .pie, .botones {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+.fila > div { flex: 1; }
+.barra, .pie { justify-content: space-between; }
+.barra { min-height: 75px; }
+.tarjetas { align-items: stretch; margin-top: 35px; }
+.tarjeta { flex: 1; padding: 30px; background: white; border: 1px solid #f2d3df; border-radius: 18px; }
+.tarjeta-rosa { background: #f6b4cd; }
+.simbolo { color: #963a61; font-size: 32px; }
+
+/* 3. Menú */
+header { background: #fffafb; border-bottom: 1px solid #f2d3df; }
+.logo { color: #963a61; font-size: 26px; font-weight: bold; }
+nav { display: flex; gap: 25px; font-size: 14px; }
+.enlace-contacto { color: #963a61; }
+#boton-menu { display: none; }
+
+/* 4. La portada rosa */
+.portada { background: #fff1f6; padding: 90px 0; }
+h1 { font-size: 72px; margin: 18px 0 0; }
+.apellido { letter-spacing: 5px; color: #963a61; }
+.descripcion { max-width: 520px; }
+.punto, .saludo, .frase, .firma { color: #c65c85; }
+.detalle { margin-top: 32px; font-size: 12px; letter-spacing: 2px; }
+.foto-portada { text-align: center; }
+.foto-portada img { width: 390px; height: 510px; object-fit: cover; border: 9px solid white; border-radius: 190px 190px 95px 95px; transform: rotate(3deg); }
+.saludo { font-family: Georgia, serif; font-size: 30px; }
+
+/* 5. Los botones */
+.botones { margin-top: 25px; flex-wrap: wrap; }
+.boton { display: inline-block; background: #963a61; color: white; border: 0; border-radius: 30px; padding: 13px 22px; font-size: 14px; cursor: pointer; }
+.enlace { color: #963a61; }
+.boton-claro { background: white; color: #963a61; }
+.botones-centro { justify-content: center; }
+
+/* 6. Mis fotos y mis secciones */
+.foto-sobre-mi, .foto-momentos { text-align: center; }
+.foto-sobre-mi img { width: 360px; height: 450px; object-fit: cover; border-radius: 180px 180px 25px 25px; }
+.nota-foto, .recuerdo { color: #963a61; font-style: italic; }
+.formacion, .momentos { background: #fff1f6; }
+.caja-legal { background: #fce6ef; padding: 40px; border-radius: 25px; }
+.datos-curso { padding: 25px; background: white; border-radius: 20px; }
+.herramientas { color: #963a61; font-weight: bold; }
+.foto-momentos img { width: 365px; height: 430px; object-fit: cover; border-radius: 24px; transform: rotate(-3deg); }
+.firma { font-family: Georgia, serif; font-size: 24px; }
+.contacto { background: #f6b4cd; padding: 90px 0; }
+.contacto h2 { font-size: 52px; }
+#mensaje { margin-top: 20px; }
+footer { background: #432532; color: white; padding: 22px 0; }
+footer .logo { color: #f6b4cd; }
+
+/* 7. Si usamos un celular, ponemos las cajas una debajo de otra */
+@media (max-width: 760px) {
+  .fila, .tarjetas, .pie { flex-direction: column; }
+  .seccion, .portada, .contacto { padding: 55px 0; }
+  h1 { font-size: 52px; }
+  h2, .contacto h2 { font-size: 37px; }
+  .foto-portada img { width: 275px; height: 360px; }
+  .foto-sobre-mi img, .foto-momentos img { width: 290px; height: 350px; }
+  .caja-legal { padding: 25px; }
+  .barra { flex-wrap: wrap; padding: 15px 0; }
+  #boton-menu { display: block; background: #f6b4cd; border: 0; padding: 10px; border-radius: 10px; }
+  nav { display: none; width: 100%; flex-direction: column; gap: 12px; padding: 15px; background: #fff1f6; }
+  .pie { text-align: center; gap: 5px; }
+}
